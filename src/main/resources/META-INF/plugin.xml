@@ -1,0 +1,46 @@
+<idea-plugin>
+    <id>com.dsplugin.git-celebration</id>
+    <name>Git Celebration Plugin</name>
+    <version>1.0.0</version>
+    <vendor email="support@dsplugin.com" url="https://dsplugin.com">DSPlugin</vendor>
+
+    <description><![CDATA[
+    Plugin che celebra le azioni Git con immagini full screen e suoni!
+    
+    Quando esegui azioni Git come commit, merge, push, pull, il plugin mostra
+    un'immagine full screen con dissolvenza e riproduce un suono personalizzato.
+    
+    Ogni azione Git ha la sua immagine e suono associati.
+    ]]></description>
+
+    <change-notes><![CDATA[
+    Versione iniziale del plugin Git Celebration.
+    ]]></change-notes>
+
+    <!-- Compatibilità -->
+    <idea-version since-build="233" until-build="241.*"/>
+
+    <!-- Dipendenze -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>Git4Idea</depends>
+
+    <!-- Estensioni -->
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Listener per azioni Git -->
+        <postStartupActivity implementation="com.dsplugin.gitcelebration.GitCelebrationStartupActivity"/>
+        
+        <!-- CheckinHandlerFactory per intercettare i commit -->
+        <checkinHandlerFactory implementation="com.dsplugin.gitcelebration.GitCelebrationCheckinHandlerFactory"/>
+    </extensions>
+
+    <actions>
+        <!-- Azione per configurare immagini e suoni -->
+        <action id="GitCelebration.Configure"
+                class="com.dsplugin.gitcelebration.actions.ConfigureAction"
+                text="Configura Git Celebration"
+                description="Configura immagini e suoni per le azioni Git">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
+

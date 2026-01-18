@@ -1,0 +1,19 @@
+# Gradle
+.gradle/
+build/
+out/
+*.iml
+*.ipr
+*.iws
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Plugin build
+distributions/
+
