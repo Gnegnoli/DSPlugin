@@ -13,7 +13,7 @@ repositories {
 intellij {
     version.set("2023.3")
     type.set("PS") // PHPStorm
-    // Git è integrato in PHPStorm, non serve aggiungerlo come plugin
+    plugins.set(listOf("Git4Idea"))
 }
 
 tasks {
@@ -41,4 +41,3 @@ tasks {
 dependencies {
     implementation("org.jetbrains:annotations:24.0.1")
 }
-
