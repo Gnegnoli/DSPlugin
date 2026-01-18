@@ -85,7 +85,7 @@ Se hai problemi con Gradle, puoi usare IntelliJ IDEA:
 ## ❌ Risoluzione Problemi
 
 ### Errore: "JAVA_HOME is not set"
-- Installa Java 17+ da https://adoptium.net/
+- Installa Java 17+ da https://www.java.com/it/download/windows_manual.jsp
 - Imposta la variabile d'ambiente JAVA_HOME
 
 ### Errore: "Gradle wrapper JAR not found"
