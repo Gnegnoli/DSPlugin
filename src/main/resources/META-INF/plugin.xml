@@ -22,7 +22,7 @@
 
     <!-- Dipendenze -->
     <depends>com.intellij.modules.platform</depends>
-    <depends>Git4Idea</depends>
+    <!-- Git è integrato in PHPStorm, non serve come dipendenza esplicita -->
 
     <!-- Estensioni -->
     <extensions defaultExtensionNs="com.intellij">
