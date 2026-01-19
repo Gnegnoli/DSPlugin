@@ -1,65 +1,59 @@
-# ⚠️ Problema: Java Version
+# Java and UI Implementation Notes
 
-## Il Problema
+This document describes the technical approach used in DSGitCelebration.
 
-L'errore indica che Gradle sta usando **Java 8**, ma il plugin IntelliJ Gradle richiede **Java 11+**.
+## Java Version
 
-## Soluzione 1: Installa Java 17 (CONSIGLIATO)
+The plugin is built using:
 
-Il plugin stesso richiede Java 17 per compilare, quindi è meglio installare Java 17:
+- Java 17
+- IntelliJ Platform SDK 2023.3+
 
-1. **Scarica Java 17** da: https://adoptium.net/temurin/releases/?version=17
-2. **Installa Java 17**
-3. **Imposta JAVA_HOME**:
-   - Apri **Impostazioni di Sistema** → **Variabili d'ambiente**
-   - Crea/modifica `JAVA_HOME` e imposta il percorso di Java 17 (es: `C:\Program Files\Eclipse Adoptium\jdk-17.x.x-hotspot`)
-   - Aggiungi `%JAVA_HOME%\bin` al `PATH`
-4. **Verifica**:
-   ```powershell
-   java -version
-   ```
-   Dovresti vedere Java 17
+This is required by modern JetBrains IDEs and the Gradle IntelliJ Plugin.
 
-5. **Riprova la compilazione**:
-   ```powershell
-   .\gradlew.bat buildPlugin
-   ```
+## UI Technology
 
-## Soluzione 2: Usa Java 11+ Temporaneamente
+The plugin uses **Swing** for rendering the celebration overlay.
 
-Se hai già Java 11 o superiore installato ma non è quello predefinito:
+Key design choices:
+- Undecorated `JFrame`
+- Transparent PNG support
+- Opacity-based fade-in and fade-out
+- Non-blocking timers (`javax.swing.Timer`)
 
-1. **Trova il percorso di Java 11+**:
-   ```powershell
-   where java
-   ```
+JavaFX is intentionally not used to avoid:
+- Additional runtime dependencies
+- UI thread conflicts inside the IDE
 
-2. **Imposta JAVA_HOME temporaneamente**:
-   ```powershell
-   $env:JAVA_HOME = "C:\percorso\a\java11"
-   ```
+## Transparency and Foreground Behavior
 
-3. **Riprova la compilazione**
+The overlay:
+- Uses PNG images with alpha channel
+- Is rendered in the foreground using `setAlwaysOnTop(true)`
+- Automatically disposes after fade-out
+- Does not block IDE input after completion
 
-## Soluzione 3: Usa IntelliJ IDEA per Compilare
+## Audio Playback
 
-Se hai IntelliJ IDEA installato:
+Audio is handled using `javax.sound.sampled.Clip`:
+- Supports WAV files
+- Plays asynchronously
+- Automatically releases resources after playback
 
-1. Apri il progetto in **IntelliJ IDEA** (non PHPStorm)
-2. IntelliJ IDEA gestirà automaticamente la versione di Java corretta
-3. Vai su **Build** → **Build Project** o usa il terminale integrato:
-   ```
-   ./gradlew buildPlugin
-   ```
+If audio fails to load, the plugin falls back gracefully without interrupting
+the user workflow.
 
-## Verifica Versione Java
+## Error Handling
 
-Per verificare quale versione di Java stai usando:
+All visual and audio effects are optional:
+- If a resource cannot be loaded, the plugin fails silently
+- No blocking dialogs are shown
+- Git actions are never interrupted
 
-```powershell
-java -version
-javac -version
-```
+## Rationale
 
-Se vedi Java 8, devi installare Java 17.
-
+The implementation prioritizes:
+- Stability
+- Compatibility with JetBrains IDEs
+- Minimal performance impact
+- Clean resource disposal

@@ -1,79 +1,141 @@
-# Guida alla Compilazione e Installazione
+📘 Build and Installation Guide — DSGitCelebration
 
-## Passo 1: Verifica Prerequisiti
+This guide explains how to build, install, and test the DSGitCelebration plugin in PhpStorm or other JetBrains IDEs.
 
-Assicurati di avere:
-- Java 17 o superiore installato
-- Gradle installato (o usa il wrapper Gradle incluso)
+Step 1: Verify Prerequisites
 
-Per verificare Java:
-```bash
+Before building the plugin, make sure you have:
+
+Java 17 or higher installed
+
+Gradle installed (or use the included Gradle wrapper)
+
+To check your Java version, run:
+
 java -version
-```
 
-## Passo 2: Compila il Plugin
 
-Apri un terminale nella cartella del progetto e esegui:
+Tip: On Windows, you may need to set the JAVA_HOME environment variable to your JDK path.
 
-### Su Windows (PowerShell):
-```powershell
+Step 2: Build the Plugin
+
+Open a terminal in the project folder and run the following command:
+
+On Windows (PowerShell)
 .\gradlew.bat buildPlugin
-```
 
-### Su Linux/Mac:
-```bash
+On Linux / macOS
 ./gradlew buildPlugin
-```
 
-Se non hai il wrapper Gradle, installalo prima:
-```bash
+
+If you don’t have the Gradle wrapper, you can generate it first:
+
 gradle wrapper
-```
 
-## Passo 3: Trova il File del Plugin
 
-Dopo la compilazione, il plugin sarà disponibile in:
-```
+Tip: Use the wrapper whenever possible to ensure consistent Gradle versions across machines.
+
+Step 3: Locate the Plugin File
+
+After the build completes successfully, the plugin archive will be located at:
+
 build/distributions/DSPlugin-1.0.0.zip
-```
 
-## Passo 4: Installa il Plugin in PHPStorm
 
-1. Apri PHPStorm
-2. Vai su **File** → **Settings** (o **Preferences** su Mac)
-3. Seleziona **Plugins**
-4. Clicca sull'icona ⚙️ (ingranaggio) in alto
-5. Seleziona **Install Plugin from Disk...**
-6. Naviga fino a `build/distributions/DSPlugin-1.0.0.zip`
-7. Seleziona il file e clicca **OK**
-8. PHPStorm ti chiederà di riavviare - clicca **Restart IDE**
+This is the file you will install in PhpStorm.
 
-## Passo 5: Configura il Plugin
+Step 4: Install the Plugin in PhpStorm
 
-Dopo il riavvio:
-1. Vai su **Tools** → **Configura Git Celebration**
-2. Verifica che le immagini e suoni siano configurati correttamente
-3. Se necessario, seleziona i tuoi file personalizzati
+Open PhpStorm.
 
-## Passo 6: Testa il Plugin
+Go to File → Settings (or Preferences on macOS).
 
-1. Apri un progetto Git in PHPStorm
-2. Fai un commit, merge, push o pull
-3. Dovresti vedere l'immagine full screen con dissolvenza e sentire il suono!
+Select Plugins.
 
-## Risoluzione Problemi
+Click the ⚙️ (gear) icon in the top-right corner.
 
-### Errore di compilazione Java
-- Verifica di avere Java 17+: `java -version`
-- Se necessario, imposta `JAVA_HOME` nel sistema
+Choose Install Plugin from Disk…
 
-### Plugin non appare in PHPStorm
-- Verifica che il file ZIP sia stato creato correttamente
-- Controlla che PHPStorm sia compatibile (versione 2023.3 o superiore)
-- Verifica che il plugin non sia già installato (disinstallalo e reinstalla)
+Navigate to build/distributions/DSPlugin-1.0.0.zip.
 
-### Le celebrazioni non funzionano
-- Verifica che il progetto sia un repository Git
-- Controlla che le immagini e suoni siano nei percorsi corretti
-- Apri la configurazione e verifica i percorsi dei file
+Select the file and click OK.
 
+Restart PhpStorm when prompted.
+
+Tip: If you already installed a previous version, uninstall it first to avoid conflicts.
+
+Step 5: Configure the Plugin
+
+After restarting:
+
+Open Tools → Configure DSGitCelebration.
+
+Verify that the default images and sounds are correctly set.
+
+If needed, select your own custom images and audio files for each Git action.
+
+Adjust the fade-in/out durations and display time to your preference.
+
+Pro Tip: Use transparent PNGs for the best visual effect and WAV files for reliable audio playback.
+
+Step 6: Test the Plugin
+
+Open a Git-enabled project in PhpStorm.
+
+Perform a Git action, such as:
+
+Commit
+
+Merge
+
+Push
+
+Pull
+
+You should see:
+
+Full-screen celebration overlay
+
+Smooth fade-in and fade-out animation
+
+Audio playback during the celebration
+
+The IDE should remain fully usable; no dialogs will block your workflow.
+
+Troubleshooting
+Java Compilation Errors
+
+Ensure Java 17 or higher is installed:
+
+java -version
+
+
+Set the JAVA_HOME environment variable if necessary.
+
+Plugin Not Showing in PhpStorm
+
+Confirm that the ZIP file was generated correctly.
+
+Check that your PhpStorm version is 2023.3 or higher.
+
+If the plugin was previously installed, uninstall it and reinstall.
+
+Celebrations Do Not Trigger
+
+Verify that your project is a Git repository.
+
+Ensure images and audio files exist at the configured paths.
+
+Open the configuration panel and double-check all file paths.
+
+Additional Tips & Notes
+
+The plugin is non-blocking: Git actions are never interrupted.
+
+Use high-resolution PNGs for better visual quality on large monitors.
+
+WAV audio files are recommended; MP3 may not always play reliably in Swing.
+
+You can configure different images and sounds for each Git action for maximum fun!
+
+Always test in a sandbox IDE before using in production.
