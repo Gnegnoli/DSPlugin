@@ -1,113 +1,112 @@
-# 🚀 Istruzioni per Compilare e Installare il Plugin
+# 🚀 Instructions for Compiling and Installing the Plugin
 
-## ✅ Passo 1: Verifica che hai Java installato
+## ✅ Step 1: Verify that you have Java installed
 
-Apri PowerShell e verifica:
+Open PowerShell and verify:
 ```powershell
-java -version
+java-version
 ```
 
-Devi avere Java 17 o superiore. Se non ce l'hai, scaricalo da: https://adoptium.net/
+You must have Java 17 or higher. If you don't have it, download it from: https://adoptium.net/
 
-## ✅ Passo 2: Scarica Gradle Wrapper JAR (se necessario)
+## ✅ Step 2: Download the Gradle Wrapper JAR (if necessary)
 
-Se il file `gradle\wrapper\gradle-wrapper.jar` non esiste:
+If the `gradle\wrapper\gradle-wrapper.jar` file does not exist:
 
-1. Vai su: https://services.gradle.org/distributions/gradle-8.5-bin.zip
-2. Oppure scarica direttamente il JAR da: https://raw.githubusercontent.com/gradle/gradle/v8.5.0/gradle/wrapper/gradle-wrapper.jar
-3. Salva il file come `gradle\wrapper\gradle-wrapper.jar` nella cartella del progetto
+1. Go to: https://services.gradle.org/distributions/gradle-8.5-bin.zip
+2. Or download the JAR directly from: https://raw.githubusercontent.com/gradle/gradle/v8.5.0/gradle/wrapper/gradle-wrapper.jar
+3. Save the file as `gradle\wrapper\gradle-wrapper.jar` in your project folder.
 
-**OPPURE** usa IntelliJ IDEA per compilare (vedi Passo Alternativo sotto)
+**OR** Use IntelliJ IDEA to compile (see Alternate Step below).
 
-## ✅ Passo 3: Compila il Plugin
+## ✅ Step 3: Compile the Plugin
 
-Apri PowerShell nella cartella del progetto e esegui:
+Open PowerShell in your project folder and run:
 
 ```powershell
 .\gradlew.bat buildPlugin
 ```
 
-La prima volta scaricherà Gradle automaticamente (può richiedere alcuni minuti).
+The first time it downloads Gradle automatically (this may take a few minutes).
 
-## ✅ Passo 4: Trova il Plugin Compilato
+## ✅ Step 4: Find the Compiled Plugin
 
-Dopo la compilazione, il file ZIP sarà in:
+After compilation, the ZIP file will be located at:
 ```
 build\distributions\DSPlugin-1.0.0.zip
 ```
 
-## ✅ Passo 5: Installa in PHPStorm
+## ✅ Step 5: Install in PHPStorm
 
-1. Apri **PHPStorm**
-2. Vai su **File** → **Settings** (o **Preferences** su Mac)
-3. Clicca su **Plugins**
-4. Clicca sull'icona ⚙️ (ingranaggio) in alto a destra
-5. Seleziona **Install Plugin from Disk...**
-6. Naviga fino a `build\distributions\DSPlugin-1.0.0.zip`
-7. Seleziona il file e clicca **OK**
-8. PHPStorm ti chiederà di riavviare - clicca **Restart IDE**
+1. Open **PHPStorm**
+2. Go to **File** → **Settings** (or **Preferences** on Mac)
+3. Click **Plugins**
+4. Click the ⚙️ (gear) icon in the top right
+5. Select **Install Plugin from Disk...**
+6. Navigate to `build\distributions\DSPlugin-1.0.0.zip`
+7. Select the file and click **OK**
+8. PHPStorm will ask you to restart - click **Restart IDE**
 
-## ✅ Passo 6: Configura il Plugin
+## ✅ Step 6: Configure the Plugin
 
-Dopo il riavvio:
-1. Vai su **Tools** → **Configura Git Celebration**
-2. Per ogni azione (commit, merge, pull, ecc.), verifica o configura:
-   - **Immagine**: Seleziona il file immagine (PNG, JPG, GIF, BMP)
-   - **Suono**: Seleziona il file audio (WAV, MP3, OGG)
-3. Clicca **OK** per salvare
+After Restart:
+1. Go to **Tools** → **Configure Git Celebration**
+2. For each action (commit, merge, pull, etc.), verify or configure:
+- **Image**: Select the image file (PNG, JPG, GIF, BMP)
+- **Sound**: Select the audio file (WAV, MP3, OGG)
+3. Click **OK** to save
 
-## ✅ Passo 7: Testa!
+## ✅ Step 7: Test!
 
-1. Apri un progetto Git in PHPStorm
-2. Fai un **commit**, **merge**, **push** o **pull**
-3. Dovresti vedere l'immagine full screen con dissolvenza e sentire il suono! 🎉
-
----
-
-## 🔄 Passo Alternativo: Compila con IntelliJ IDEA
-
-Se hai problemi con Gradle, puoi usare IntelliJ IDEA:
-
-1. Apri il progetto in **IntelliJ IDEA** (non PHPStorm)
-2. Vai su **File** → **Project Structure** → **Project Settings** → **Project**
-   - Imposta **SDK**: Java 17
-   - Imposta **Language level**: 17
-3. Vai su **File** → **Settings** → **Build, Execution, Deployment** → **Build Tools** → **Gradle**
-   - Seleziona **Use Gradle from**: 'gradle-wrapper.properties' file
-4. Apri il terminale in IntelliJ e esegui:
-   ```
-   ./gradlew buildPlugin
-   ```
-5. Il plugin sarà in `build/distributions/DSPlugin-1.0.0.zip`
+1. Open a Git project in PHPStorm
+2. Perform a **commit**, **merge**, **push**, or **pull**
+3. You should see the image fade in full screen and hear the sound! 🎉
 
 ---
 
-## ❌ Risoluzione Problemi
+## 🔄 Alternative Step: Compile with IntelliJ IDEA
 
-### Errore: "JAVA_HOME is not set"
-- Installa Java 17+ da https://www.java.com/it/download/windows_manual.jsp
-- Imposta la variabile d'ambiente JAVA_HOME
+If you're having trouble with Gradle, you can use IntelliJ IDEA:
 
-### Errore: "Gradle wrapper JAR not found"
-- Scarica manualmente `gradle-wrapper.jar` (vedi Passo 2)
-- Oppure usa IntelliJ IDEA per compilare
-
-### Il plugin non appare in PHPStorm
-- Verifica che PHPStorm sia versione 2023.3 o superiore
-- Controlla che il file ZIP sia stato creato correttamente
-- Se il plugin è già installato, disinstallalo e reinstalla
-
-### Le celebrazioni non funzionano
-- Verifica che il progetto sia un repository Git
-- Controlla che le immagini e suoni siano nei percorsi corretti
-- Apri la configurazione e verifica i percorsi dei file
+1. Open the project in **IntelliJ IDEA** (not PHPStorm)
+2. Go to **File** → **Project Structure** → **Project Settings** → **Project**
+- Set **SDK**: Java 17
+- Set **Language level**: 17
+3. Go to **File** → **Settings** → **Build, Execution, Deployment** → **Build Tools** → **Gradle**
+- Select **Use Gradle from**: 'gradle-wrapper.properties' file
+4. Open a terminal in IntelliJ and run:
+```
+./gradlew buildPlugin
+```
+5. The plugin will be in `build/distributions/DSPlugin-1.0.0.zip`
 
 ---
 
-## 📝 Note
+## ❌ Troubleshooting
 
-- Le immagini devono essere in formato: PNG, JPG, GIF o BMP
-- I suoni devono essere in formato: WAV, MP3 o OGG
-- Il plugin funziona solo con progetti Git
-- Le immagini vengono scalate automaticamente per adattarsi allo schermo
+### Error: "JAVA_HOME is not set"
+- Install Java 17+ from https://www.java.com/it/download/windows_manual.jsp
+- Set the JAVA_HOME environment variable
 
+### Error: "Gradle wrapper JAR not found"
+- Manually download `gradle-wrapper.jar` (see Step 2)
+- Or use IntelliJ IDEA to compile
+
+### Plugin not appearing in PHPStorm
+- Verify that PHPStorm is version 2023.3 or higher
+- Verify that the ZIP file was created correctly
+- If the plugin is already installed, uninstall and reinstall it
+
+### Celebrations not working
+- Verify that the project is a Git repository
+- Verify that the images and sounds are in the correct paths
+- Open the configuration and verify the file paths.
+
+---
+
+## 📝 Notes
+
+- Images must be in PNG, JPG, GIF, or BMP format.
+- Sounds must be in WAV, MP3, or OGG format.
+- The plugin only works with Git projects.
+- Images are automatically scaled to fit the screen.
