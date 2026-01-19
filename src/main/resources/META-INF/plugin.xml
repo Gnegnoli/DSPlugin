@@ -18,7 +18,7 @@
     ]]></change-notes>
 
     <!-- Compatibilità -->
-    <idea-version since-build="233" until-build="241.*"/>
+    <idea-version since-build="233" until-build="253.*"/>
 
     <!-- Dipendenze -->
     <depends>com.intellij.modules.platform</depends>
