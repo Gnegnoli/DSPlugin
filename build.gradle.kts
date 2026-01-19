@@ -22,6 +22,12 @@ tasks {
         targetCompatibility = "17"
     }
 
+    // Su alcune installazioni (specie Windows) può fallire per problemi di classpath/VM.
+    // Non è necessario per generare lo ZIP installabile del plugin.
+    buildSearchableOptions {
+        enabled = false
+    }
+
     patchPluginXml {
         sinceBuild.set("233")
         untilBuild.set("241.*")

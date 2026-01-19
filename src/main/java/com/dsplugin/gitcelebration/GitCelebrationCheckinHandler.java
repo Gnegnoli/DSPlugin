@@ -2,7 +2,6 @@ package com.dsplugin.gitcelebration;
 
 import com.intellij.openapi.vcs.CheckinProjectPanel;
 import com.intellij.openapi.vcs.checkin.CheckinHandler;
-import com.intellij.openapi.vcs.ui.Refreshable;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -19,19 +18,11 @@ public class GitCelebrationCheckinHandler extends CheckinHandler {
         this.celebrationManager = celebrationManager;
     }
     
-    @Override
-    public ReturnResult beforeCheckin(CommitExecutor executor, Refreshable refreshable) {
-        // Prima del commit, non facciamo nulla
-        return ReturnResult.COMMIT;
-    }
-    
-    @Override
     public void checkinSuccessful() {
         // Dopo un commit riuscito, celebra!
         celebrationManager.celebrate("commit");
     }
     
-    @Override
     public void checkinFailed() {
         // Commit fallito, nessuna celebrazione
     }

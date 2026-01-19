@@ -38,11 +38,15 @@ public class CelebrationManager {
             imagePath = config.getDefaultImagePath(actionType);
             soundPath = config.getDefaultSoundPath(actionType);
         }
+
+        final String finalImagePath = imagePath;
+        final String finalSoundPath = soundPath;
+        final String finalActionType = actionType;
         
         // Mostra celebrazione in un thread separato per non bloccare l'UI
         CompletableFuture.runAsync(() -> {
             CelebrationDisplay display = new CelebrationDisplay(project);
-            display.showCelebration(imagePath, soundPath, actionType);
+            display.showCelebration(finalImagePath, finalSoundPath, finalActionType);
         });
     }
 }
