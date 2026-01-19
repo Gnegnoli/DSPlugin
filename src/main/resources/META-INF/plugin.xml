@@ -1,48 +1,76 @@
 <idea-plugin>
-    <id>com.dsplugin.git-celebration</id>
-    <name>Git Celebration Plugin</name>
-    <version>1.0.0</version>
-    <vendor email="support@dsplugin.com" url="https://dsplugin.com">DSPlugin</vendor>
+    <!-- Unique plugin identifier -->
+    <id>com.dsplugin.dsgitcelebration</id>
 
+    <!-- Plugin name as shown in Marketplace -->
+    <name>DSGitCelebration</name>
+
+    <!-- Plugin version -->
+    <version>1.0.0</version>
+
+    <!-- Author / Vendor information -->
+    <vendor email="acavallaro.ge@gmail.com"
+            url="https://github.com/Gnegnoli">
+        Gnegnoli
+    </vendor>
+
+    <!-- Plugin description (HTML allowed) -->
     <description><![CDATA[
-    Plugin che celebra le azioni Git con immagini full screen e suoni!
-    
-    Quando esegui azioni Git come commit, merge, push, pull, il plugin mostra
-    un'immagine full screen con dissolvenza e riproduce un suono personalizzato.
-    
-    Ogni azione Git ha la sua immagine e suono associati.
+        <b>DSGitCelebration</b><br><br>
+        Adds Dark Souls–style visual and audio celebrations to Git actions
+        inside JetBrains IDEs.<br><br>
+
+        When performing Git actions such as commit, merge, push, or pull,
+        the plugin displays a transparent animated overlay with fade-in and
+        fade-out effects and plays a custom sound.<br><br>
+
+        <b>Main features:</b>
+        <ul>
+            <li>Transparent PNG overlay</li>
+            <li>Smooth fade-in and fade-out animation</li>
+            <li>Custom images and sounds per Git action</li>
+            <li>Non-blocking and immersive experience</li>
+            <li>Configurable via Tools menu</li>
+        </ul>
     ]]></description>
 
+    <!-- Changelog -->
     <change-notes><![CDATA[
-    Versione iniziale del plugin Git Celebration.
+        <b>1.0.0</b><br>
+        Initial public release.
     ]]></change-notes>
 
-    <!-- Compatibilità -->
-    <idea-version since-build="233" until-build="253.*"/>
+    <!-- IDE compatibility -->
+    <idea-version since-build="233" until-build="241.*"/>
 
-    <!-- Dipendenze -->
+    <!-- Required platform module -->
     <depends>com.intellij.modules.platform</depends>
 
-    <!-- Estensioni -->
+    <!-- Extensions -->
     <extensions defaultExtensionNs="com.intellij">
-        <!-- Listener per azioni Git -->
-        <postStartupActivity implementation="com.dsplugin.gitcelebration.GitCelebrationStartupActivity"/>
-        
-        <!-- CheckinHandlerFactory per intercettare i commit -->
-        <checkinHandlerFactory implementation="com.dsplugin.gitcelebration.GitCelebrationCheckinHandlerFactory"/>
 
-        <!-- Service di progetto per configurazione persistente -->
-        <projectService serviceImplementation="com.dsplugin.gitcelebration.CelebrationConfig"/>
+        <!-- Startup activity -->
+        <postStartupActivity
+                implementation="com.dsplugin.gitcelebration.GitCelebrationStartupActivity"/>
+
+        <!-- Git commit interception -->
+        <checkinHandlerFactory
+                implementation="com.dsplugin.gitcelebration.GitCelebrationCheckinHandlerFactory"/>
+
+        <!-- Persistent project configuration -->
+        <projectService
+                serviceImplementation="com.dsplugin.gitcelebration.CelebrationConfig"/>
+
     </extensions>
 
+    <!-- Actions -->
     <actions>
-        <!-- Azione per configurare immagini e suoni -->
-        <action id="GitCelebration.Configure"
+        <action id="DSGitCelebration.Configure"
                 class="com.dsplugin.gitcelebration.actions.ConfigureAction"
-                text="Configura Git Celebration"
-                description="Configura immagini e suoni per le azioni Git">
+                text="Configure DSGitCelebration"
+                description="Configure images and sounds for Git celebrations">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
         </action>
     </actions>
-</idea-plugin>
 
+</idea-plugin>
