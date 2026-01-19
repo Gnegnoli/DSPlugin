@@ -5,7 +5,6 @@ import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,6 +23,11 @@ public class CelebrationConfig implements PersistentStateComponent<CelebrationCo
     }
     
     private State state = new State();
+
+    public CelebrationConfig() {
+        // Se lo state non viene caricato subito, evitiamo mappe vuote/null
+        initializeDefaults();
+    }
     
     public static CelebrationConfig getInstance(@NotNull Project project) {
         return project.getService(CelebrationConfig.class);

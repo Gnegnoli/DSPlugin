@@ -30,6 +30,9 @@
         
         <!-- CheckinHandlerFactory per intercettare i commit -->
         <checkinHandlerFactory implementation="com.dsplugin.gitcelebration.GitCelebrationCheckinHandlerFactory"/>
+
+        <!-- Service di progetto per configurazione persistente -->
+        <projectService serviceImplementation="com.dsplugin.gitcelebration.CelebrationConfig"/>
     </extensions>
 
     <actions>

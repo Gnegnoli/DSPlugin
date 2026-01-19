@@ -18,7 +18,12 @@ public class CelebrationManager {
     
     public CelebrationManager(@NotNull Project project) {
         this.project = project;
-        this.config = CelebrationConfig.getInstance(project);
+        CelebrationConfig cfg = CelebrationConfig.getInstance(project);
+        if (cfg == null) {
+            // fallback ultra-difensivo: non dovrebbe succedere se il service è registrato
+            cfg = new CelebrationConfig();
+        }
+        this.config = cfg;
     }
     
     public static CelebrationManager getInstance(@NotNull Project project) {
